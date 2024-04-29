@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Quran Sound</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+    background-color: #F9E0BB;
+    }
+
+    .navbar{
+    width: 100%;
+    height: 75px;
+    display: flex;
+    background-color: #8D7B68;
+    }
+
+    .navbar h1{
+    text-align: center;
+    margin: auto;
+    color: white;
+    }
+    
+  
+
+
+  h2 {
+      text-align: center;
+      margin-top: 15px;
+      color: black;
+  }
+
+  .playerr {
+      margin: auto;
+      width: 80%;
+      background-color: #A9907E;
+      display: grid;
+      grid-template-columns: 48px 1fr 48px;
+      grid-gap: 16px;
+      padding: 14px 24px;
+      position: relative;
+      border-radius: 64px;
+  }
+
+  .control,#current {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  #playbtn {
+      font-size: 24px;
+      color: transparent;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: white;
+      cursor: pointer;
+  }
+
+  #playbtn:hover{
+      -webkit-text-fill-color: white;
+  }
+
+  .info{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 21px;
+      color: white;
+  }
+
+  #current {
+      text-align: right;
+      color: white;
+  }
+
+
+  .bar {
+      --space: -4px;
+      background-color: #24242424;
+      overflow: hidden;
+      left: var(--space);
+      right: var(--space);
+      top: var(--space);
+      bottom: var(--space);
+      position: absolute;
+      border-radius: 64px;
+      z-index: -2;
+  }
+
+  #progress {
+      display: block;
+      width: var(--progress,0%);
+      background-color: white;
+      transition: all 1s linear;
+      height: 100%;
+  }
+
+ 
+    </style>
+</head>
+<body>
+      <!--navbar-->
+      <div class="navbar">
+        <h1>Quran Sound</h1>
+    </div>
+
+    <!--video-->
+    <main>
+
+<!-- same
+
+audio
+time
+progress 
+control
+-->
+
+<!-- different
+    h2
+    info
+-->
+
+        <!--1 - surah al fatiha-->
+         <h2>Al - Fatiha </h2>
+
+         <br>
+         <audio  id="player" src="Al-Fatiha.mp3"></audio>
+      
+         <div class="playerr">
+             <div class="control">
+                 <i class="fas fa-play" id="playbtn"></i>
+             </div>
+             <div class="info">
+                 Surah Al-Fatiha
+             <div class="bar">
+                 <div id="progress"></div>
+             </div>
+         </div>
+             <div id="current">0:00</div>
+         </div>
+
+
+
+        <!--2 surah al baqarah-->
+        <h2> Al - Baqarah </h2>
+
+         <br>
+         <audio  id="player" src="Surah_Al_Baqarah_Abdul_Basit_Abdul_Samad_سورة_البقرة_كاملة_للشيخ.mp3"></audio>
+      
+         <div class="playerr">
+             <div class="control">
+                 <i class="fas fa-play" id="playbtn"></i>
+             </div>
+             <div class="info">
+                 Surah Al-Baqarah
+             <div class="bar">
+                 <div id="progress"></div>
+             </div>
+         </div>
+             <div id="current">0:00</div>
+         </div>
+        <!--3 surah aali imran-->
+        <h2>  Aali - Imran </h2>
+        <br>
+        <audio  id="player" src="surah_al_imran_abdulbasit_سورة_ال_عمران_كاملةMP3_70K.mp3"></audio>
+     
+        <div class="playerr">
+            <div class="control">
+                <i class="fas fa-play" id="playbtn"></i>
+            </div>
+            <div class="info">
+                Surah Al-Fatiha
+            <div class="bar">
+                <div id="progress"></div>
+            </div>
+        </div>
+            <div id="current">0:00</div>
+        </div>
+
+        <!--4 surah an nisa-->
+        <h2> An - Nisa </h2>
+        <hr style="width: 15%;  margin: auto; color: black;">
+        <div class="card">
+
+        </div>
+        <!--5 surah al ma'idah-->
+        <h2>Al - Ma'idah </h2>
+        <hr style="width: 15%;  margin: auto; color: black;">
+        <div class="card">
+            
+        </div>
+
+   
+    </main>
+
+    <!-- same
+
+audio
+time
+progress 
+control
+-->
+
+<!-- different
+    h2
+    info
+-->
+
+
+
+  <!--1 - surah al fatiha-->
+ <!-- <h2>Al - Fatiha </h2>
+
+  <br>
+  <audio  id="player" src="Al-Fatiha.mp3"></audio>
+
+  <div class="player">
+      <div class="control">
+          <i class="fas fa-play" id="playbtn"></i>
+      </div>
+      <div class="info">
+          Surah Al-Fatiha
+      <div class="bar">
+          <div id="progress"></div>
+      </div>
+  </div>
+      <div id="current">0:00</div>
+  </div>
+
+
+-->
+
+    <script>
+
+        
+        var player=document.getElementById("player");
+        let progress=document.getElementById("progress");
+        let playbtn=document.getElementById("playbtn");
+    
+        var playpause = function () {
+            if (player.paused) {
+                player.play();
+            } else {
+                player.pause();
+            }
+        }
+    
+        playbtn.addEventListener("click", playpause);
+    
+        player.onplay = function () {
+            playbtn.classList.remove("fa-play");
+            playbtn.classList.add("fa-pause");
+        }
+    
+        player.onpause = function () {
+            playbtn.classList.add("fa-play");
+            playbtn.classList.remove("fa-pause");
+        }
+        
+    
+        player.ontimeupdate = function  () {
+            let ct = player.currentTime;
+            current.innerHTML = timeFormat(ct);
+            //progress
+            let duration = player.duration;
+            prog = Math.floor((ct * 100) / duration); 
+            progress.style.setProperty("--progress", prog + "%" );
+        }
+    
+        function timeFormat(ct) {
+            minutes = Math.floor(ct / 60);
+            seconds = Math.floor(ct % 60);
+    
+            if (seconds < 10) {
+                seconds = "0"+seconds;
+            }
+    
+            return minutes + ":" + seconds;
+        }
+
+
+        function createPlayerDiv(playerr, control ,info, bar)
+
+            // Create parent Div
+    const parentDiv = document.createElement('div');
+    parentDiv.className = 'playerr';
+
+    // Create control Div
+    const controlDiv = document.createElement('div');
+    controlDiv.className = 'control';
+
+    const imageElement = document.createElement('i');
+    iDiv.className = 'fas fa-play';
+
+    const infoElement = document.createElement('info');
+    infoDiv.className = 'info';
+
+    const barDiv = document.createElement('bar');
+    barDiv.className = 'bar';
+
+    // Add image element to image div
+    imageDiv.appendChild(imageElement);
+
+    // Add img div to parent div
+    parentDiv.appendChild(imageDiv);
+
+    // Create title div
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'titl';
+    titleDiv.textContent = title;
+
+    // Add Title Div to parent Div
+    parentDiv.appendChild(titleDiv);
+
+    // Create Contact Button
+    const contact = document.createElement('div');
+    contact.className = 'bt';
+
+    // Add Contact Btn to Parent Div
+    parentDiv.appendChild(contact);
+
+    // Return parent Div
+    return parentDiv;
+    </script>
+
+
+</body>
+</html>

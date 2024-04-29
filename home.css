@@ -1,0 +1,90 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: #F9E0BB;
+}
+
+.navbar{
+    width: 100%;
+    height: 75px;
+    display: flex;
+    background-color: #8D7B68;
+}
+
+.navbar h1{
+    text-align: center;
+    margin: auto;
+    color: white;
+}
+
+.bg{
+    width: 90%;
+    height: 200px;
+    background-color: white;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.bg img{
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+}
+
+.card{
+    width: 90%;
+    height: 100px;
+    background-color: #A9907E;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+.card h2{
+    text-align: center;
+    margin: auto;
+    color: #F5F5F5;
+}
+
+
+
+.btn button{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    border: none;
+    border-radius: 20px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.btn button a{
+    padding: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: black;
+    font-weight: 900;
+    border-radius: 20px;
+    background-color: #fff;
+    font-size: larger;
+}
+
+.btn button a:hover{
+    background-color: #eee;
+}
+
+.collum{
+    width: 100%;
+    height: 400px;
+    background-color: #8D7B68;
+    margin: auto;
+    margin-top: 130px;
+    border-radius:40px 40px 0px 0px;
+}
