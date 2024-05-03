@@ -22,11 +22,22 @@ body{
 
 .bg{
     width: 90%;
-    height: 200px;
-    background-color: white;
+    height: 300px;
+    background-color: #8D7B68;
     margin: auto;
     margin-top: 20px;
     border-radius: 15px;
+    display: flex;
+}
+
+.tasbeeh{
+    width: 50%;
+    height: 60px;
+    background-color: #F5F5F5;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px rgba(119, 119, 119, 0.404);
 }
 
 .bg img{
@@ -40,7 +51,7 @@ body{
     height: 100px;
     background-color: #A9907E;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 30px;
     border-radius: 20px;
 }
 
@@ -87,4 +98,22 @@ a{
     margin: auto;
     margin-top: 130px;
     border-radius:40px 40px 0px 0px;
+}
+
+.image{
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.185);
+    display: flex;
+    border-radius: 10px;
+}
+
+.footer{
+    width: 100%;
+    height: 130px;
+    background-color: #8D7B68;
+    margin-top: 20px;
 }
