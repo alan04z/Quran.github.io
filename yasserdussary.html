@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quran Sound</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+    background-color: #F9E0BB;
+    }
+
+    .navbar{
+    width: 100%;
+    height: 75px;
+    background-color: #8D7B68;
+    display: flex;
+    }
+
+    .navbar h1{
+    text-align: center;
+    margin: auto;
+    color: white;
+    }
+    
+    .card{
+        width:90%;
+        height: 100px;
+        background-color: #A9907E;
+        margin: auto;
+        margin-top: 20px;
+        border-radius: 15px;
+    }
+
+
+  h2 {
+      text-align: center;
+      margin-top: 15px;
+      color: black;
+  }
+
+  .player {
+      margin: auto;
+      width: 80%;
+      background-color: #A9907E;
+      display: grid;
+      grid-template-columns: 48px 1fr 48px;
+      grid-gap: 16px;
+      padding: 14px 24px;
+      position: relative;
+      border-radius: 64px;
+  }
+
+  .control,#current {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .playBtn {
+      font-size: 24px;
+      color: transparent;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: white;
+      cursor: pointer;
+  }
+
+  .playBtn:hover{
+      -webkit-text-fill-color: white;
+  }
+
+  .info{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 21px;
+      color: white;
+  }
+
+  .current {
+      text-align: right;
+      color: white;
+  }
+
+
+  .bar {
+      --space: -4px;
+      background-color: #24242424;
+      overflow: hidden;
+      left: var(--space);
+      right: var(--space);
+      top: var(--space);
+      bottom: var(--space);
+      position: absolute;
+      border-radius: 64px;
+      z-index: -2;
+  }
+
+  .progress {
+      display: block;
+      width: var(--progress,0%);
+      background-color: white;
+      transition: all 1s linear;
+      height: 100%;
+  }
+
+  .footer{
+      width: 100%;
+      height: 110px;
+      background-color:#8D7B68;
+      margin-top: 30px;
+      display: flex;
+  }
+
+  .footer h1{
+    margin: auto;  
+    margin-top: 10px;
+    color: white;
+  }
+
+ ul{
+     display: flex;
+     margin-top: 25px;
+     margin-left: 30px;
+ }
+
+ a{
+     text-decoration: none;
+     color: white;
+     font-size: 25px;
+ }
+
+
+ 
+
+
+    </style>
+</head>
+<body>
+      <!--navbar-->
+      <div class="navbar">
+          <ul>
+            <a href="index.html"><i class="fa-solid fa-house"></i></a>
+          </ul>
+        <h1>RUH AL-QURAN</h1>
+    </div>
+
+    <main id="mainBody">
+
+    </main>
+
+   
+
+<script>
+    var items = [
+        {
+            title: "Al-Fatihah",
+            subtitle: "Surah Al-Fatiha",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/1.mp3"
+        },
+        {
+            title: "Al-Baqarah",
+            subtitle: "Surah Al-Baqarah",
+            mp3: "https://download.quranicaudio.com/quran/yasser_ad-dussary/002.mp3"
+        },
+        {
+            title: "Ali 'Imran",
+            subtitle: "Surah Ali 'Imran",
+            mp3: "https://download.quranicaudio.com/quran/yasser_ad-dussary/003.mp3"
+        },
+        {
+            title: "An-Nisa",
+            subtitle: "Surah An-Nisa",
+            mp3: "https://download.quranicaudio.com/quran/yasser_ad-dussary/004.mp3"
+        },
+        {
+            title:  "Al-Ma'idah",
+            subtitle: "Surah Al-Ma'idah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/5.mp3"
+        },
+        {
+            title: "Al-An'am",
+            subtitle: "Surah Al-An'am",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/6.mp3"
+        },
+        {
+            title: "Al-A'raf",
+            subtitle: "Surah Al-A'raf",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/7.mp3"
+        },
+        {
+            title: "Al-Anfal",
+            subtitle: "Surah Al-Anfal",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/8.mp3"
+        },
+
+        {
+            title: "At-Tawbah",
+            subtitle: "Surah At-Tawbah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/9.mp3"
+        },
+        {
+            title: "Yunus",
+            subtitle: "Surah Yunus",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/10.mp3"
+        },
+        {
+            title: "Hud",
+            subtitle: "Surah Hud",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/11.mp3"
+        },
+        {
+            title: "Yusuf",
+            subtitle: "Surah Yusuf",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/12.mp3"
+        },
+        {
+            title: "Ar-Ra'd",
+            subtitle: "Surah Ar-Ra'd",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/13.mp3"
+        },
+        {
+            title: "Ibrahim",
+            subtitle: "Surah Ibrahim",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/14.mp3"
+        },
+        {
+            title: "Al-Hijr",
+            subtitle: "Surah Al-Hijr",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/15.mp3"
+        },
+        {
+            title: "An-Nahl",
+            subtitle: "Surah An-Nahl",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/16.mp3"
+        },
+
+
+        {
+            title: "Al-Isra",
+            subtitle: "Surah Al-Isra",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/17.mp3"
+        },
+        {
+            title: "Al-Kahf",
+            subtitle: "Surah Al-Kahf",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/18.mp3"
+        },
+        {
+            title: "Maryam",
+            subtitle: "Surah Maryam",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/19.mp3"
+        },
+        {
+            title: "Taha",
+            subtitle: "Surah Taha",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/20.mp3"
+        },
+        {
+            title: " Al-Anbya",
+            subtitle: "Surah Al-Anbya",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/21.mp3"
+        },
+        {
+            title: " Al-Hajj",
+            subtitle: "Surah Al-Hajj",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/22.mp3"
+        },
+        {
+            title: " Al-Mu'minun",
+            subtitle: "Surah Al-Mu'minun",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/23.mp3"
+        },
+        {
+            title: " An-Nur",
+            subtitle: "Surah An-Nur",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/24.mp3"
+        },
+
+        {
+            title: " Al-Furqan",
+            subtitle: "Surah Al-Furqan",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/25.mp3"
+        },
+        {
+            title: " Ash-Shu'ara",
+            subtitle: "Surah Ash-Shu'ara",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/26.mp3"
+        },
+        {
+            title: " An-Naml",
+            subtitle: "Surah An-Naml",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/27.mp3"
+        },
+        {
+            title: " Al-Qasas",
+            subtitle: "Surah Al-Qasas",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/28.mp3"
+        },
+        {
+            title: " Al-'Ankabut",
+            subtitle: "Surah Al-'Ankabut",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/29.mp3"
+        },
+        {
+            title: " Ar-Rum",
+            subtitle: "Surah Ar-Rum",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/30.mp3"
+        },
+        {
+            title: " Luqman",
+            subtitle: "Surah Luqman",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/31.mp3"
+        },
+        {
+            title: " As-Sajdah",
+            subtitle: "Surah As-Sajdah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/32.mp3"
+        },
+
+        {
+            title: " Al-Ahzab",
+            subtitle: "Surah Al-Ahzab",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/33.mp3"
+        },
+        {
+            title: "Saba",
+            subtitle: "Surah Saba",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/34.mp3"
+        },
+        {
+            title: "Fatir",
+            subtitle: "Surah Fatir",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/35.mp3"
+        },
+        {
+            title: "Ya-Sin",
+            subtitle: "Surah Ya-Sin",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/36.mp3"
+        },
+        {
+            title: "As-Saffat",
+            subtitle: "Surah As-Saffat",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/37.mp3"
+        },
+        {
+            title: "Sad",
+            subtitle: "Surah Sad",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/38.mp3"
+        },
+        {
+            title: "Az-Zumar",
+            subtitle: "Surah Az-Zumar",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/39.mp3"
+        },
+        {
+            title: "Ghafir",
+            subtitle: "Surah Ghafir",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/40.mp3"
+        },
+
+        {
+            title: "Fussilat",
+            subtitle: "Surah Fussilat",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/41.mp3"
+        },
+        {
+            title: "Ash-Shuraa",
+            subtitle: "Surah Ash-Shuraa",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/42.mp3"
+        },
+        {
+            title: "Az-Zukhruf",
+            subtitle: "Surah Az-Zukhruf",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/43.mp3"
+        },
+        {
+            title: "Ad-Dukhan",
+            subtitle: "Surah Ad-Dukhan",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/44.mp3"
+        },
+        {
+            title: "Al-Jathiyah",
+            subtitle: "Surah Al-Jathiyah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/45.mp3"
+        },
+        {
+            title: "Al-Ahqaf",
+            subtitle: "Surah Al-Ahqaf",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/46.mp3"
+        },
+        {
+            title: "Muhammad",
+            subtitle: "Surah Muhammad",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/47.mp3"
+        },
+        {
+            title: "Al-Fath",
+            subtitle: "Surah Al-Fath",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/48.mp3"
+        },
+
+        
+        {
+            title: "Al-Hujurat",
+            subtitle: "Surah Al-Hujurat",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/49.mp3"
+        },
+        {
+            title: "Qaf",
+            subtitle: "Surah Qaf",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/50.mp3"
+        },
+        {
+            title: "Adh-Dhariyat",
+            subtitle: "Surah Adh-Dhariyat",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/51.mp3"
+        },
+        {
+            title: "At-Tur",
+            subtitle: "Surah At-Tur",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/52.mp3"
+        },
+        {
+            title: "An-Najm",
+            subtitle: "Surah An-Najm",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/53.mp3"
+        },
+        {
+            title: "Al-Qamar",
+            subtitle: "Surah Al-Qamar",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/54.mp3"
+        },
+        {
+            title: "Ar-Rahman",
+            subtitle: "Surah Ar-Rahman",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/55.mp3"
+        },
+        {
+            title: "Al-Waqi'ah",
+            subtitle: "Surah Al-Waqi'ah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/56.mp3"
+        },
+
+        {
+            title: "Al-Hadid",
+            subtitle: "Surah Al-Hadid",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/57.mp3"
+        },
+        {
+            title: "Al-Mujadila",
+            subtitle: "Surah Al-Mujadila",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/58.mp3"
+        },
+        {
+            title: "Al-Hashr",
+            subtitle: "Surah Al-Hashr",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/59.mp3"
+        },
+        {
+            title: "Al-Mumtahanah",
+            subtitle: "Surah Al-Mumtahanah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/60.mp3"
+        },
+        {
+            title: "As-Saf",
+            subtitle: "Surah As-Saf",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/61.mp3"
+        },
+        {
+            title: "Al-Jumu'ah",
+            subtitle: "Surah Al-Jumu'ah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/62.mp3"
+        },
+        {
+            title: "Al-Munafiqun",
+            subtitle: "Surah Al-Munafiqun",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/63.mp3"
+        },
+        {
+            title: "At-Taghabun",
+            subtitle: "Surah At-Taghabun",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/64.mp3"
+        },
+
+
+        {
+            title: "At-Talaq",
+            subtitle: "Surah At-Talaq",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/65.mp3"
+        },
+        {
+            title: "At-Tahrim",
+            subtitle: "Surah At-Tahrim",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/66.mp3"
+        },
+        {
+            title: "Al-Mulk",
+            subtitle: "Surah Al-Mulk",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/67.mp3"
+        },
+        {
+            title: "Al-Qalam",
+            subtitle: "Surah Al-Qalam",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/68.mp3"
+        },
+        {
+            title: "Al-Haqqah",
+            subtitle: "Surah Al-Haqqah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/69.mp3"
+        },
+        {
+            title: "Al-Ma'arij",
+            subtitle: "Surah Al-Ma'arij",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/70.mp3"
+        },
+        {
+            title: "Nuh",
+            subtitle: "Surah Nuh",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/71.mp3"
+        },
+        {
+            title: "Al-Jinn",
+            subtitle: "Surah Al-Jinn",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/72.mp3"
+        },
+
+        {
+            title: "Al-Muzzammil",
+            subtitle: "Surah Al-Muzzammil",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/73.mp3"
+        },
+        {
+            title: "Al-Muddaththir",
+            subtitle: "Surah Al-Muddaththir",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/74.mp3"
+        },
+        {
+            title: "Al-Qiyamah",
+            subtitle: "Surah Al-Qiyamah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/75.mp3"
+        },
+        {
+            title: "Al-Insan",
+            subtitle: "Surah Al-Insan",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/76.mp3"
+        },
+        {
+            title: "Al-Mursalat",
+            subtitle: "Surah Al-Mursalat",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/77.mp3"
+        },
+        {
+            title: "An-Naba",
+            subtitle: "Surah An-Naba",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/78.mp3"
+        },
+        {
+            title: "An-Nazi'at",
+            subtitle: "Surah An-Nazi'at",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/79.mp3"
+        },
+        {
+            title: "'Abasa",
+            subtitle: "Surah 'Abasa",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/80.mp3"
+        },
+
+        {
+            title: "At-Takwir",
+            subtitle: "Surah At-Takwir",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/81.mp3"
+        },
+        {
+            title: "Al-Infitar",
+            subtitle: "Surah Al-Infitar",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/82.mp3"
+        },
+        {
+            title: "Al-Mutaffifin",
+            subtitle: "Surah Al-Mutaffifin",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/83.mp3"
+        },
+        {
+            title: "Al-Inshiqaq",
+            subtitle: "Surah Al-Inshiqaq",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/84.mp3"
+        },
+        {
+            title: "Al-Buruj",
+            subtitle: "Surah Al-Buruj",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/85.mp3"
+        },
+        {
+            title: "At-Tariq",
+            subtitle: "Surah At-Tariq",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/86.mp3"
+        },
+        {
+            title: "Al-A'la",
+            subtitle: "Surah Al-A'la",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/87.mp3"
+        },
+        {
+            title: "Al-Ghashiyah",
+            subtitle: "Surah Al-Ghashiyah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/88.mp3"
+        },
+
+        {
+            title: "Al-Fajr",
+            subtitle: "Surah Al-Fajr",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/89.mp3"
+        },
+        {
+            title: "Al-Balad",
+            subtitle: "Surah Al-Balad",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/90.mp3"
+        },
+        {
+            title: "Ash-Shams",
+            subtitle: "Surah Ash-Shams",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/91.mp3"
+        },
+        {
+            title: "Al-Layl",
+            subtitle: "Surah Al-Layl",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/92.mp3"
+        },
+        {
+            title: "Ad-Duhaa",
+            subtitle: "Surah Ad-Duhaa",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/93.mp3"
+        },
+        {
+            title: "Ash-Sharh",
+            subtitle: "Surah Ash-Sharh",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/94.mp3"
+        },
+        {
+            title: "At-Tin",
+            subtitle: "Surah At-Tin",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/95.mp3"
+        },
+        {
+            title: "Al-'Alaq",
+            subtitle: "Surah Al-'Alaq",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/96.mp3"
+        },
+
+
+        {
+            title: "Al-Qadr",
+            subtitle: "Surah Al-Qadr",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/97.mp3"
+        },
+        {
+            title: "Al-Bayyinah",
+            subtitle: "Surah Al-Bayyinah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/98.mp3"
+        },
+        {
+            title: "Az-Zalzalah",
+            subtitle: "Surah Az-Zalzalah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/99.mp3"
+        },
+        {
+            title: "Al-'Adiyat",
+            subtitle: "Surah Al-'Adiyat",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/100.mp3"
+        },
+        {
+            title: "Al-Qari'ah",
+            subtitle: "Surah Al-Qari'ah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/101.mp3"
+        },
+        {
+            title: "At-Takathur",
+            subtitle: "Surah At-Takathur",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/102.mp3"
+        },
+        {
+            title: "Al-'Asr",
+            subtitle: "Surah Al-'Asr",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/103.mp3"
+        },
+        {
+            title: "Al-Humazah",
+            subtitle: "Surah Al-Humazah",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/104.mp3"
+        },
+
+        {
+            title: "Al-Fil",
+            subtitle: "Surah Al-Fil",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/105.mp3"
+        },
+        {
+            title: "Quraysh",
+            subtitle: "Surah Quraysh",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/106.mp3"
+        },
+        {
+            title: "Al-Ma'un",
+            subtitle: "Surah Al-Ma'un",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/107.mp3"
+        },
+        {
+            title: "Al-Kawthar",
+            subtitle: "Surah Al-Kawthar",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/108.mp3"
+        },
+        {
+            title: "Al-Kafirun",
+            subtitle: "Surah Al-Kafirun",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/109.mp3"
+        },
+        {
+            title: "An-Nasr",
+            subtitle: "Surah An-Nasr",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/110.mp3"
+        },
+        {
+            title: "Al-Masad",
+            subtitle: "Surah Al-Masad",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/111.mp3"
+        },
+        {
+            title: "Al-Ikhlas",
+            subtitle: "Surah Al-Ikhlas",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/112.mp3"
+        },
+        {
+            title: "Al-Falaq",
+            subtitle: "Surah Al-Falaq",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/113.mp3"
+        },
+        {
+            title: "An-Nas",
+            subtitle: "Surah An-Nas",
+            mp3: "https://download.quranicaudio.com/qdc/yasser_ad-dussary/mp3/114.mp3"
+        }
+        
+    ];
+
+    var pageBody = document.getElementById("mainBody");
+    console.log(pageBody);
+
+    var createItem = function(title, mp3, subtitle, titlecount) {
+
+        console.log("M: start");
+        // Create parent element
+        var div = document.createElement("div");
+        // Add header for title
+        var headerElement = document.createElement("h2")
+        headerElement.textContent = `${titlecount}. ${title}`;
+        div.append(headerElement);
+
+        // Add link break
+        var lineBreak = document.createElement("br");
+        div.append(lineBreak);
+
+        // Add audio player
+        var audioPlayer = document.createElement("audio");
+        audioPlayer.setAttribute("src", mp3);
+        div.append(audioPlayer);
+
+
+        var audioDiv = document.createElement("div");
+        audioDiv.setAttribute("class", "player");
+        var controls = document.createElement("div");
+        controls.setAttribute("class", "control");
+        var playBtn = document.createElement("i");
+        playBtn.className = "fas fa-play playBtn";
+        controls.append(playBtn);
+        audioDiv.append(controls);
+
+        var infoElement = document.createElement("div");
+        infoElement.textContent = subtitle;
+        infoElement.setAttribute("class", "info")
+
+        var bar = document.createElement("div");
+        bar.className = "bar";
+        
+        var progress = document.createElement("div");
+        progress.className = "progress";
+        bar.append(progress);
+
+        infoElement.append(bar);
+
+        audioDiv.append(infoElement);
+
+
+        var timeElement = document.createElement("div");
+        timeElement.innerText = "0:00";
+        timeElement.className = "current";
+        audioDiv.append(timeElement);
+
+        div.append(audioDiv);
+
+        var playpause = function () {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+            } else {
+                audioPlayer.pause();
+            }
+        }
+
+        playBtn.addEventListener("click", playpause);
+
+        audioPlayer.onplay = function () {
+            playBtn.classList.remove("fa-play");
+            playBtn.classList.add("fa-pause");
+        }
+
+        audioPlayer.onpause = function () {
+            playBtn.classList.add("fa-play");
+            playBtn.classList.remove("fa-pause");
+        }
+
+        audioPlayer.ontimeupdate = function  () {
+            let ct = audioPlayer.currentTime;
+            timeElement.innerHTML = timeFormat(ct);
+            //progress
+            let duration = audioPlayer.duration;
+            prog = Math.floor((ct * 100) / duration); 
+            progress.style.setProperty("--progress", prog + "%" );
+        }
+
+        function timeFormat(ct) {
+            minutes = Math.floor(ct / 60);
+            seconds = Math.floor(ct % 60);
+
+            if (seconds < 10) {
+                seconds = "0"+seconds;
+            }
+
+            return minutes + ":" + seconds;
+        }
+
+        return div;
+        
+    };
+
+    console.log("Adding items");
+    var titlecount = 1
+    items.forEach(element => {
+        var htmlElement = createItem(element.title, element.mp3, element.subtitle, titlecount);
+        pageBody.append(htmlElement);
+        titlecount = titlecount + 1;
+
+    });
+</script>
+
+
+<div class="footer">
+    <h1>RUH AL-QURAN</h1>
+</div>
+
+</body>
+</html>
